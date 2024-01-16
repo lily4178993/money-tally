@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :expenses, foreign_key: :author_id, dependent: :destroy
   has_many :groups, dependent: :destroy
@@ -14,6 +14,6 @@ class User < ApplicationRecord
   private
 
   def set_default_profile_photo
-    self.profile_photo ||= assets_path('images/default_profile_photo.png')
+    self.profile_photo ||= assets_path('images/default_profile_photo.svg')
   end
 end
