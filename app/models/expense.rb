@@ -7,7 +7,7 @@ class Expense < ApplicationRecord
   validates :author_id, presence: true, allow_blank: false
 
   def self.recent_expenses(group)
-    expenses = group.expenses.includes(:author).order(created_at: :desc)
+    group.expenses.includes(:author).order(created_at: :desc)
   end
 
   def self.total_expenses

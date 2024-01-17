@@ -5,7 +5,7 @@ RSpec.describe Users::SessionsController, type: :controller do
 
   describe 'After sign in' do
     before do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env['devise.mapping'] = Devise.mappings[:user]
       user = create(:user)
       sign_in user
     end
@@ -17,7 +17,7 @@ RSpec.describe Users::SessionsController, type: :controller do
 
   describe 'After sign out' do
     before do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env['devise.mapping'] = Devise.mappings[:user]
       user = create(:user)
       sign_out user
     end
