@@ -14,6 +14,6 @@ class User < ApplicationRecord
   private
 
   def set_default_profile_photo
-    self.profile_photo ||= assets_path('images/default_profile_photo.svg')
+    self.profile_photo ||= 'images/default_profile_photo.svg'
   end
 end
