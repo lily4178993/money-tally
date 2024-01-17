@@ -6,12 +6,16 @@ class Expense < ApplicationRecord
   validates :amount, presence: true, allow_blank: false, numericality: { greater_than: 0 }
   validates :author_id, presence: true, allow_blank: false
 
+  def self.recent_expenses(group)
+    expenses = group.expenses.includes(:author).order(created_at: :desc)
+  end
+
   def self.total_expenses
     Expense.all.sum(:amount)
   end
 
   def self.total_expenses_by_group(group)
-    Expense.joins(:groups).where(groups: { id: group.id }).sum(:amount)
+    group.expenses.sum(:amount)
   end
 
   def self.total_expenses_by_group_and_month(group, month)
