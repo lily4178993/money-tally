@@ -22,22 +22,20 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
     if @group.save
       flash[:notice] = 'New group created!'
-      redirect_to user_groups_path(current_user)
     else
       flash[:alert] = 'Something went wrong! Failed to create a new group!'
-      redirect_to user_groups_path(current_user)
     end
+    redirect_to user_groups_path(current_user)
   end
 
   def destroy
     @group = Group.find(params[:id])
     if @group.destroy
       flash[:notice] = 'Group deleted!'
-      redirect_to user_groups_path(current_user)
     else
       flash[:alert] = 'Something went wrong! Failed to delete the group!'
-      redirect_to user_groups_path(current_user)
     end
+    redirect_to user_groups_path(current_user)
   end
 
   private

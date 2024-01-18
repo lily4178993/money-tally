@@ -13,11 +13,10 @@ class ExpensesController < ApplicationController
     @expense.groups << @group
     if @expense.save
       flash[:notice] = 'New expense created!'
-      redirect_to user_group_path(current_user, @group)
     else
       flash[:alert] = 'Something went wrong! Failed to create a new expense!'
-      redirect_to user_group_path(current_user, @group)
     end
+    redirect_to user_group_path(current_user, @group)
   end
 
   def destroy
@@ -25,11 +24,10 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     if @expense.destroy
       flash[:notice] = 'Expense deleted!'
-      redirect_to user_group_path(current_user, @group)
     else
       flash[:alert] = 'Something went wrong! Failed to delete the expense!'
-      redirect_to user_group_path(current_user, @group)
     end
+    redirect_to user_group_path(current_user, @group)
   end
 
   private
