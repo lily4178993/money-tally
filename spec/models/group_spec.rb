@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
+  let(:user) { create(:user) }
+
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:user_id) }
@@ -16,8 +18,8 @@ RSpec.describe Group, type: :model do
   describe 'class methods' do
     describe '.total_groups' do
       it 'returns the total number of groups' do
-        create_list(:group, 3)
-        expect(Group.total_groups).to eq(3)
+        create_list(:group, 3, user:)
+        expect(Group.total_groups(user)).to eq(3)
       end
     end
 

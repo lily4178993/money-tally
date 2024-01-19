@@ -6,8 +6,8 @@ class Group < ApplicationRecord
   validates :user_id, presence: true, allow_blank: false
   validates :icon, presence: true, allow_blank: false
 
-  def self.total_groups
-    Group.all.count(:id)
+  def self.total_groups(user)
+    Group.where(user_id: user.id).count(:id)
   end
 
   def self.recent_groups
