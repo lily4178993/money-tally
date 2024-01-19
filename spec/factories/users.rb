@@ -3,6 +3,6 @@ FactoryBot.define do
     sequence(:name) { |n| "User #{n}" }
     sequence(:email) { |n| "user#{n}@example.com" }
     password { 'password' }
-    profile_photo { 'MyString' }
+    profile_photo { 'images/default_profile_photo.png' }
   end
 end
