@@ -15,11 +15,11 @@ class Expense < ApplicationRecord
   end
 
   def self.total_expenses_by_group(group)
-    group.expenses.sum(:amount)
+    group.expenses.sum(&:amount)
   end
 
   def self.total_expenses_by_group_and_month(group, month)
-    Expense.joins(:groups).where(groups: { id: group.id }, created_at: month).sum(:amount)
+    group.expenses.select { |expense| expense.created_at.between?(month.first, month.last) }.sum(&:amount)
   end
 
   def self.total_expenses_by_month(month)
