@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root "splash#index"
 
-  resources :users do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resources :groups, only: [:index, :show, :new, :create, :destroy] do
       resources :expenses, only: [:new, :create, :destroy]
     end
