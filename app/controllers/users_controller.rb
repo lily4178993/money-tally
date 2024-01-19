@@ -6,21 +6,22 @@ class UsersController < ApplicationController
     @total_groups = Group.total_groups(current_user)
     @total_expenses = @user.expenses.total_expenses
 
-    @total_expenses_by_group = @user.groups.includes(:expenses).map do |group|
+    @total_expenses_by_group = @user.groups.includes(:expenses).to_h do |group|
       [group.name, Expense.total_expenses_by_group(group)]
-    end.to_h
+    end
 
-    @total_expenses_by_month = (1..12).map do |month|
+    @total_expenses_by_month = (1..12).to_h do |month|
       date = Date.new(Date.today.year, month)
       [Date::MONTHNAMES[month], Expense.total_expenses_by_month(date.beginning_of_month..date.end_of_month)]
-    end.to_h
+    end
 
-    @total_expenses_by_group_and_month = @user.groups.includes(:expenses).map do |group|
-      [group.name, (1..12).map do |month|
+    @total_expenses_by_group_and_month = @user.groups.includes(:expenses).to_h do |group|
+      [group.name, (1..12).to_h do |month|
         date = Date.new(Date.today.year, month)
-        [Date::MONTHNAMES[month], Expense.total_expenses_by_group_and_month(group, date.beginning_of_month..date.end_of_month)]
-      end.to_h]
-    end.to_h
+        [Date::MONTHNAMES[month],
+         Expense.total_expenses_by_group_and_month(group, date.beginning_of_month..date.end_of_month)]
+      end]
+    end
   end
 
   def edit
@@ -52,8 +53,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    permitted_params = [:profile_photo, :name, :email, :current_password]
-    permitted_params += [:change_password, :password, :password_confirmation] if params[:user][:change_password] == '1'
+    permitted_params = %i[profile_photo name email current_password]
+    permitted_params += %i[change_password password password_confirmation] if params[:user][:change_password] == '1'
     params.require(:user).permit(permitted_params)
   end
 end
