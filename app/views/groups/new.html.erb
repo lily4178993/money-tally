@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to user_groups_path(current_user) do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1>New Category</h1>
+  </div>
+  <div class="wrapper-right">
+    <%= form_for([@user, @group], url: user_groups_path(current_user)) do |f| %>
+      <div class="form-inputs">
+        <%= f.text_field :name, placeholder: 'Category Name', class: 'form-input' %>
+        <div>
+          <h2 class="form-pictures-label"> Pick an Image </h2>
+          <div class="pictures-wrapper">
+            <% Dir.glob("app/assets/images/g/*").each do |file| %>
+              <%= f.radio_button :icon, "g/" + file.split('/').last, { checked: false, class: 'iconOption picture-checkbox' } %>
+              <%= image_tag("g/" + file.split('/').last, class: 'icon-small') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  
+      <div class="actions">
+        <%= f.submit 'Create', class: 'form-submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  var iconOptions = document.getElementsByClassName('iconOption');
+  for (var i = 0; i <script iconOptions.length; i++) {
+    iconOptions[i].addEventListener('change', function() {
+      document.getElementById('selectedIcon').src = '/assets/' + this.value;
+    });
+  }
+</script>
