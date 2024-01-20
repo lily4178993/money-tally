@@ -9,8 +9,36 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  <% if user_signed_in? %>
+    <%= button_tag(class:'menu-button', data: { action: "click->menu#toggle" }) do %>
+      <%= image_tag("m/menuButton.svg", class:'icon-small') %>
+    <% end %>
+    <header class="menu">
+        <%= button_tag(class:'menu-close-button', data: { action: "click->menu#toggle" }) do %>
+          <%= image_tag("m/menuClose.svg", class:'icon-small') %>
+        <% end %>
+        <%= render 'layouts/main_naviguation' %>
+      </header>
+  <% end %>
   <body>
-    <%= yield %>
+    <main>
+      <div>
+        <%= alert %>
+        <%= notice %>
+      </div>
+      <%= yield %>
+    </main>
   </body>
+
+  <script>
+    document.querySelector(".menu-button").addEventListener("click", (e) => {
+      console.log("click");
+      document.querySelector(".menu").classList.toggle("active");
+    });
+
+    document.querySelector(".menu-close-button").addEventListener("click", (e) => {
+      console.log("click");
+      document.querySelector(".menu").classList.remove("active");
+    });
+  </script>
 </html>
