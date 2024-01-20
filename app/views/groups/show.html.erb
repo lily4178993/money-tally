@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to user_groups_path(current_user) do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1 class="title">Expenses</h1>
+  </div>
+  <div class="wrapper-right wrapper-expenses">
+    <h2 class="title-box">
+      <span class="title">
+        <%= image_tag("#{@group.icon}",class:"icon icon-normal") %>
+        <%= @group.name %>
+      </span>
+      <span class="card-price">$<%= @total_expense_amount %></span>
+    </h1>
+    <% if @expenses.empty? %>
+      <p class="empty-message">There is nothing here...</p>
+    <% else %>
+      <ul class="categories">
+        <% @expenses.each do |expense| %>
+          <li class="category">
+            <div class="card-2">
+              <h2 class="title"><%= expense.name %></h2>
+              <p class="card-price">
+                $<%= expense.amount %>
+              </p>
+              <p class="creation-date">
+                <%= expense.created_at.strftime("%d %b %Y") %>
+              </p>
+            </div>
+              <div class="card-actions">
+                <%= button_to 'Destroy', user_group_expense_path(current_user, @group, expense),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+              </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="box-buttons-actions">
+      <%= link_to 'Add a new expense', new_user_group_expense_path(current_user, @group), class:'add-button' %>
+    </div>
+  </div>
+</div>
