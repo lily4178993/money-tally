@@ -1,0 +1,113 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <h1>Edit profile informations</h1>
+    <div class="back-box">
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+  </div>
+  <div class="wrapper-right">
+    <%= form_for @user, url: user_path(@user), method: :patch, html: { multipart: true } do |f| %>
+      <div class="field">
+        <%= f.label :profile_photo %>
+        <%= image_tag("#{@user.profile_photo}", id: "selectedAvatar", class:'icon-normal') %>
+        <%= button_tag "Custom your avatar", id: "avatarButton" %>
+      </div>
+
+      <!-- Modal with profile images -->
+      <div class="modal" id="avatarModal" style="display: none;">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h2>Choose your avatar</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-content">
+            <!-- Insert your shared modal content here -->
+            <% Dir.glob("app/assets/images/u/*").each do |file| %>
+      
+              <%= f.radio_button :profile_photo, "u/" + file.split('/').last, { checked: false, class: 'avatarOption' } %>
+      
+                <%= image_tag("u/" + file.split('/').last, class:'icon-small') %>
+                  <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "#{@user.name}" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "#{@user.email}", disabled: true, id: 'email' %>
+      </div>
+
+      <div class="field">
+        <%= f.check_box :change_password, { id: 'change_password' } %>
+        <%= f.label :change_password, 'Change password' %>
+      </div>
+
+      <div id="password_fields" style="display: none;">
+        <div class="field">
+          <%= f.label :current_password %><br />
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, 'New Password' %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Save Changes" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.getElementById('avatarButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('avatarModal').style.display = 'block';
+  });
+
+  document.getElementById('closeModal').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('avatarModal').style.display = 'none';
+  });
+
+  var avatarOptions = document.getElementsByClassName('avatarOption');
+  for (var i = 0; i < avatarOptions.length; i++) {
+    avatarOptions[i].addEventListener('change', function() {
+      document.getElementById('selectedAvatar').src = '/assets/' + this.value;
+    });
+  }
+
+  document.getElementById('change_password').addEventListener('change', function() {
+    var passwordFields = document.getElementById('password_fields');
+    if (this.checked) {
+      passwordFields.style.display = 'block';
+    } else {
+      passwordFields.style.display = 'none';
+    }
+  });
+
+  document.getElementById('change_password').addEventListener('click', function(event) {
+    console.log('Change password clicked');
+    console.log('Change password checked:', this.checked);
+  });
+  document.querySelector('form').addEventListener('submit', function(event) {
+    console.log('Form submitted');
+    console.log('Change password checked:', document.getElementById('change_password').checked);
+  });
+</script>
