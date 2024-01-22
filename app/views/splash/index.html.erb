@@ -1,4 +1,9 @@
-<h1>Splash#index</h1>
-
-<%= link_to 'Sign up' , new_user_registration_path %>
-  <%= link_to 'Log in' , new_user_session_path %>
+<div class="wrapper">
+  <div class="wrapper-left wrapper-guest">
+    <h1 class="splash-logo title">Money<span>Tally</span></h1>
+  </div>
+  <div class="wrapper-right wrapper-guest">
+    <%= link_to 'Log in' , new_user_session_path, class: 'button splash-button' %>
+    <%= link_to 'Sign up' , new_user_registration_path, class: 'button splash-button' %>
+  </div>
+</div>

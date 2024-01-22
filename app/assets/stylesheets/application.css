@@ -181,7 +181,46 @@ nav ul li .title {
 
 .wrapper-guest {
   color: var(--clr-neutral-900);
+  background-color: var(--clr-neutral-200);
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper-guest .button {
+  width: 90vw;
+  text-align: center;
+  font-size: var(--fs-large);
+  text-transform: uppercase;
+  margin-bottom: 0.325rem;
+  padding: 0.625rem;
+  transition: padding 0.7s ease-in-out;
+}
+
+.wrapper-guest .button:focus-visible {
+  padding-left: 4rem;
+}
+
+.wrapper-guest .splash-button:nth-child(1) {
+  background-color: var(--clr-primary);
+  color: var(--clr-neutral-200);
+}
+
+.wrapper-guest .splash-button:nth-child(2) {
   background-color: transparent;
+  color: var(--clr-neutral-400);
+}
+
+.wrapper-guest .title {
+  font-size: var(--fs-larger);
+}
+
+.wrapper-guest.wrapper-right {
+  height: initial;
+  grid-template-rows: none;
+  align-content: center;
+  margin-top: 0;
 }
 
 .wrapper-right {
@@ -558,6 +597,20 @@ nav ul li:nth-of-type(1)::after {
   .wrapper {
     grid-template-rows: 1fr;
     grid-template-columns: min-content 1fr;
+  }
+
+  .wrapper-guest {
+    width: 50vw;
+    height: initial;
+    justify-content: flex-start;
+  }
+
+  .wrapper-guest .button {
+    width: 40vw;
+  }
+
+  .wrapper-guest .button:hover {
+    padding-left: 4rem;
   }
 
   .wrapper-left {
