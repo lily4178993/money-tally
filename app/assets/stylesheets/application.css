@@ -137,6 +137,25 @@ input {
   color: var(--clr-neutral-200);
 }
 
+.splash-logo {
+  position: relative;
+  font-family: serif;
+  font-size: var(--fs-larger);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.325rem;
+}
+
+.splash-logo span {
+  position: absolute;
+  color: var(--clr-neutral-200);
+  background-color: var(--clr-secondary);
+  padding: 0.325rem 0.625rem;
+  font-size: calc(var(--fs-normal) * 1.5);
+  letter-spacing: normal;
+  transform: rotate(-10deg);
+  top: -0.5rem;
+}
+
 /* ---------------------------------- */
 
 .wrapper {
