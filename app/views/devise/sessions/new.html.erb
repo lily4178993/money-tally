@@ -1,20 +1,28 @@
-<%= link_to '<' , root_path %>
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to root_path do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1 class="title">Login</h1>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="wrapper-right">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.email_field :email, placeholder: 'Email', autofocus: true, autocomplete: "email", class: 'form-input' %>
+      </div>
+    
+      <div class="form-inputs">
+        <%= f.password_field :password, placeholder: 'Password', autocomplete: "password", class: 'form-input' %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "Log in", class: 'form-submit' %>
+      </div>
+    <% end %>
+    
+    <%= link_to 'Forgot password?' , new_user_password_path, class: 'guest-forgot' %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= link_to 'Forgot your password?' , new_user_password_path %>
