@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   authenticated :user do
     root "groups#index", as: :authenticated_root
+    get '/profile', to: 'users#profile'
+    get '/statistics', to: 'users#statistics'
   end
 
   root "splash#index"
 
-  resources :users, only: [:show, :edit, :update, :destroy] do
-    resources :groups, only: [:index, :show, :new, :create, :destroy] do
-      resources :expenses, only: [:new, :create, :destroy]
-    end
+  resources :users, only: [:index, :show, :edit, :update, :destroy]
+  resources :groups, only: [:index, :show, :new, :create, :destroy] do
+    resources :expenses, only: [:new, :create, :destroy]
   end
 end
