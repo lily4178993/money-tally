@@ -17,8 +17,9 @@ RSpec.describe Expense, type: :model do
   describe 'class methods' do
     describe '.total_expenses' do
       it 'returns the total number of expenses' do
-        create_list(:expense, 3, amount: 1)
-        expect(Expense.total_expenses).to eq(3)
+        user = create(:user)
+        create_list(:expense, 3, author: user, amount: 10)
+        expect(Expense.total_expenses(user)).to eq(30)
       end
     end
 
