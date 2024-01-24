@@ -9,7 +9,7 @@
       </div>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to root_path, class: 'menu-item-link' do %>
         <%= image_tag("m/menuHome.svg", class:'icon-small menu-img') %>
         <span class="title">
           Home
@@ -17,7 +17,7 @@
       <% end %>
     </li>
     <li>
-      <%= link_to statistics_path do %>
+      <%= link_to statistics_path, class: 'menu-item-link' do %>
         <%= image_tag("m/menuStatistic.svg", class:'icon-small menu-img') %>
         <span class="title">
           Statistics
@@ -25,7 +25,7 @@
       <% end %>
     </li>
     <li>
-      <%= link_to profile_path do %>
+      <%= link_to profile_path, class: 'menu-item-link' do %>
         <%= image_tag("m/menuSettings.svg", class:'icon-small menu-img') %>
         <span class="title">
           Profile
