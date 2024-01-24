@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to groups_path do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1 class="title">Statistics</h1>
+  </div>
+  <div>
+    <div class="stats">
+      <p>
+        Total Categories created: <b><%= @total_groups %></b>
+      </p>
+      
+      <p>
+        Total Expenses: <b>$<%= @total_expenses %></b>
+      </p>
+    </div>
+
+    <div class="stats">
+      <div>
+        <h2>Total Expenses by Category:</h2>
+        <%= pie_chart @total_expenses_by_group, loading: "Loading..." , empty: "No data" %>
+      </div>
+      <br>
+      <div>
+        <h2>Total Expenses by Month:</h2>
+        <%= area_chart @total_expenses_by_month, loading: "Loading..." , empty: "No data" %>
+      </div>
+    </div>
+  </div>
+</div>
