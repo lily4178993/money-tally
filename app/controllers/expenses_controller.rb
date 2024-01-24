@@ -1,14 +1,13 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_group
 
   def new
-    @group = Group.find(params[:group_id])
     @expense = Expense.new
   end
 
   def create
-    @group = Group.find(params[:group_id])
-    @expense = Expense.new(expense_params)
+    @expense = @group.expenses.build(expense_params)
     @expense.author_id = current_user.id
     @expense.groups << @group
     if @expense.save
@@ -16,21 +15,24 @@ class ExpensesController < ApplicationController
     else
       flash[:alert] = 'Something went wrong! Failed to create a new expense!'
     end
-    redirect_to user_group_path(current_user, @group)
+    redirect_to group_path(@group)
   end
 
   def destroy
-    @group = Group.find(params[:group_id])
-    @expense = Expense.find(params[:id])
+    @expense = @group.expenses.find(params[:id])
     if @expense.destroy
       flash[:notice] = 'Expense deleted!'
     else
       flash[:alert] = 'Something went wrong! Failed to delete the expense!'
     end
-    redirect_to user_group_path(current_user, @group)
+    redirect_to group_path(@group)
   end
 
   private
+
+  def set_group
+    @group = current_user.groups.find(params[:group_id])
+  end
 
   def expense_params
     params.require(:expense).permit(:name, :amount)
