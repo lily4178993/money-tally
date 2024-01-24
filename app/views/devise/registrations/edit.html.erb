@@ -6,6 +6,9 @@
         <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
       <% end %>
     </div>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgWireframe.png") %>
+    </div>
   </div>
   <div class="wrapper-right">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

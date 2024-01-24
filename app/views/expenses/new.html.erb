@@ -5,9 +5,13 @@
         <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
       <% end %>
     </div>
-    <h1>
-      New <%= @group.name %> expense
+    <h1 class="title">
+      New expense
     </h1>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgPlant2.png") %>
+      <%= image_tag("bg/bgResearch.png") %>
+    </div>
   </div>
   <div class="wrapper-right">
     <%= form_for([@user, @group, @expense], url: group_expenses_path(@group)) do |f| %>

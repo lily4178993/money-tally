@@ -214,6 +214,10 @@ dialog {
   box-shadow: 0 2px 4px 1px var(--clr-neutral-300);
 }
 
+.wrapper-left-bg {
+  display: none;
+}
+
 nav ul li .title {
   color: var(--clr-neutral-200);
 }
@@ -715,6 +719,13 @@ nav ul li:nth-of-type(1)::after {
   .wrapper {
     grid-template-rows: 1fr;
     grid-template-columns: min-content 1fr;
+  }
+
+  .wrapper-left-bg {
+    display: block;
+    position: relative;
+    max-width: 25rem;
+    height: 100vh;
   }
 
   .wrapper-guest {
