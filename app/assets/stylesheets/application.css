@@ -425,7 +425,15 @@ form {
 .picture-checkbox {
   width: 2.3rem;
   height: 2.3rem;
-  transform: scale(1) translateX(1.5rem);
+  position: absolute;
+  top: 45%;
+  left: 0%;
+}
+
+.category-picture-box {
+  width: 2.3rem;
+  height: 2.3rem;
+  position: relative;
 }
 
 .modal-picture-box {
@@ -460,7 +468,7 @@ form {
 
 .picture-checkbox:hover,
 .picture-checkbox:checked {
-  transform: scale(1) translateX(1.5rem);
+  transform: translateX(45%);
 }
 
 .pictures-cont {
