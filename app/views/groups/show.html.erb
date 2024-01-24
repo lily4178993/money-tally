@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="wrapper-left">
     <div class="back-box">
-      <%= link_to user_groups_path(current_user) do %>
+      <%= link_to groups_path do %>
         <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
       <% end %>
     </div>
@@ -31,7 +31,7 @@
               </p>
             </div>
               <div class="card-actions">
-                <%= button_to 'Destroy', user_group_expense_path(current_user, @group, expense),
+                <%= button_to 'Destroy', group_expense_path(@group, expense),
                             method: :delete,
                             data: { confirm: 'Are you sure?' } %>
               </div>
@@ -41,7 +41,7 @@
     <% end %>
 
     <div class="box-buttons-actions">
-      <%= link_to 'Add a new expense', new_user_group_expense_path(current_user, @group), class:'add-button' %>
+      <%= link_to 'Add a new expense', new_group_expense_path(@group), class:'add-button' %>
     </div>
   </div>
 </div>

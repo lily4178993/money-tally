@@ -1,14 +1,14 @@
 <div class="wrapper">
   <div class="wrapper-left">
     <div class="back-box">
-      <%= link_to user_groups_path(current_user) do %>
+      <%= link_to groups_path do %>
         <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
       <% end %>
     </div>
     <h1>New Category</h1>
   </div>
   <div class="wrapper-right">
-    <%= form_for([@user, @group], url: user_groups_path(current_user)) do |f| %>
+    <%= form_for([@group], url: groups_path) do |f| %>
       <div class="form-inputs">
         <%= f.text_field :name, placeholder: 'Category Name', class: 'form-input' %>
         <div>
