@@ -19,8 +19,6 @@ class Group < ApplicationRecord
   private
 
   def destroy_expenses
-    expenses.each do |expense|
-      expense.destroy
-    end
+    expenses.each(&:destroy)
   end
 end
