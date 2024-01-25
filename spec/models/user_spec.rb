@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
   describe 'callbacks' do
     describe '#set_default_profile_photo' do
       it 'sets a default profile photo for the user' do
-        expect(user.profile_photo).to eq('images/default_profile_photo.png')
+        expect(user.profile_photo).to eq('default_profile_photo.svg')
       end
     end
   end
