@@ -1,11 +1,14 @@
 <div class="wrapper">
   <div class="wrapper-left">
-    <div class="back-box">
+    <div class="back-box" style="top: initial">
       <%= link_to root_path do %>
         <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
       <% end %>
     </div>
-    <h1 class="title">Register</h1>
+    <h1 class="title" style="top: initial">Register</h1>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgSketch.png") %>
+    </div>
   </div>
   <div class="wrapper-right">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
