@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to groups_path do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1 class="title">Profile</h1>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgSpace.png") %>
+    </div>
+  </div>
+  <div class="wrapper-right">
+    <div class="profil-card">
+      <div class="profile-card-header">
+        <div class="img-box">
+          <%= image_tag(current_user.profile_photo) %>
+        </div>
+        <%= link_to( 'Edit Profile' , edit_profile_path , class:'add-button')%>
+      </div>
+      <div class="profile-card-body">
+        <p>
+         <b>
+            <%= current_user.name %>
+          </b>
+        </p>
+        <p>
+          <b>
+            <%= current_user.email %>
+          </b>
+          <br>
+          <span>Email</span>
+        </p>
+        <p>
+          <b>
+            <%= current_user.created_at.strftime("%d %b %Y") %>
+          </b>
+          <br>
+          <span>Created at</span>
+        </p>
+      </div>
+    </div>
+</div>

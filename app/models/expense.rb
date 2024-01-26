@@ -10,12 +10,12 @@ class Expense < ApplicationRecord
     group.expenses.includes(:author).order(created_at: :desc)
   end
 
-  def self.total_expenses
-    Expense.all.sum(:amount)
+  def self.total_expenses(user)
+    user.expenses.where(author_id: user.id).sum(:amount)
   end
 
   def self.total_expenses_by_group(group)
-    group.expenses.sum(&:amount)
+    group.expenses.sum(:amount)
   end
 
   def self.total_expenses_by_group_and_month(group, month)

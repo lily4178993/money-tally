@@ -1,6 +1,9 @@
 <div class="wrapper">
   <div class="wrapper-left">
     <h1 class="title">Categories</h1>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgPlant1.png") %>
+    </div>
   </div>
   <div class="wrapper-right">
     <% if @groups.empty? %>
@@ -9,7 +12,7 @@
       <ul class="categories">
         <% @groups.each_with_index do |group, index| %>
           <li class="category">
-            <%= link_to user_group_path(current_user, group), class:"card" do %>
+            <%= link_to group_path(group), class:"card" do %>
                 <%= image_tag("#{group.icon}",class:"icon icon-large") %>
 
                   <h2 class="title"><%= group.name %></h2>
@@ -22,7 +25,7 @@
                 </div>
             <% end %>
             <div class="card-actions">
-              <%= button_to 'Delete', user_group_path(current_user, group),
+              <%= button_to 'Delete', group_path(group),
                             method: :delete,
                             data: { confirm: 'Are you sure?' } %>
             </div>
@@ -32,7 +35,7 @@
     <% end %>
 
     <div class="box-buttons-actions">
-      <%= link_to 'Add a new category', new_user_group_path(current_user), class:'add-button' %>
+      <%= link_to 'Add a new category', new_group_path, class:'add-button' %>
     </div>
   </div>
 </div>

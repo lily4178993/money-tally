@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :group do
-    name { 'MyString' }
-    icon { 'MyString' }
+    sequence(:name) { |n| "Group #{n}" }
+    sequence(:icon) { |n| "g/gi#{n}.svg" }
     user
   end
 end

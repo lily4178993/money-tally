@@ -3,37 +3,35 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   include Devise::Test::ControllerHelpers
 
-  let(:user) { create(:user) }
-
   before do
-    sign_in user
+    @user = create(:user, confirmed_at: Time.now)
+    sign_in @user
   end
 
-  describe 'GET #show' do
-    it 'redirects to the correct path' do
-      get :show, params: { id: user.id }
-      expect(response).to be_redirect
+  describe '#profile' do
+    it 'returns http success' do
+      get :profile
+      expect(response).to be_successful
     end
   end
 
-  describe 'GET #edit' do
-    it 'redirects to the correct path' do
-      get :edit, params: { id: user.id }
-      expect(response).to be_redirect
+  describe '#statistics' do
+    before do
+      @group = create(:group, user: @user)
+      @expense = create(:expense, author: @user, amount: 10)
+      get :statistics
     end
-  end
 
-  describe 'PATCH #update' do
-    it 'redirects to the correct path' do
-      patch :update, params: { id: user.id }
-      expect(response).to be_redirect
+    it 'returns http success' do
+      expect(response).to be_successful
     end
-  end
 
-  describe 'DELETE #destroy' do
-    it 'redirects to the correct path' do
-      delete :destroy, params: { id: user.id }
-      expect(response).to be_redirect
+    it 'assigns statistical data' do
+      expect(assigns(:total_groups)).not_to be_nil
+      expect(assigns(:total_expenses)).not_to be_nil
+      expect(assigns(:total_expenses_by_group)).not_to be_nil
+      expect(assigns(:total_expenses_by_month)).not_to be_nil
+      expect(assigns(:total_expenses_by_group_and_month)).not_to be_nil
     end
   end
 end

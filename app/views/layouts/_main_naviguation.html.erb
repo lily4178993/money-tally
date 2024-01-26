@@ -2,14 +2,14 @@
   <ul>
     <li>
       <div class="menu-profile">
-        <%= image_tag("#{current_user.profile_photo}",class:"icon icon-large") %>
+        <%= image_tag(current_user.profile_photo, class: "icon icon-large") %>
         <span class="title">
           <%= current_user.name %>
         </span>
       </div>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to root_path, class: 'menu-item-link' do %>
         <%= image_tag("m/menuHome.svg", class:'icon-small menu-img') %>
         <span class="title">
           Home
@@ -17,7 +17,15 @@
       <% end %>
     </li>
     <li>
-      <%= link_to user_path(current_user) do %>
+      <%= link_to statistics_path, class: 'menu-item-link' do %>
+        <%= image_tag("m/menuStatistic.svg", class:'icon-small menu-img') %>
+        <span class="title">
+          Statistics
+        </span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to profile_path, class: 'menu-item-link' do %>
         <%= image_tag("m/menuSettings.svg", class:'icon-small menu-img') %>
         <span class="title">
           Profile
