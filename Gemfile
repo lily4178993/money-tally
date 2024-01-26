@@ -35,6 +35,9 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# Devise is a flexible authentication solution for Rails based on Warden [https://github.com/heartcombo/devise]
+gem 'devise'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -49,9 +52,6 @@ group :development, :test do
 
   # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
   gem 'shoulda-matchers'
-
-  # Devise is a flexible authentication solution for Rails based on Warden [https://github.com/heartcombo/devise]
-  gem 'devise'
 
   # CanCanCan is an authorization library for Ruby on Rails [https://github.com/CanCanCommunity/cancancan]
   gem 'cancancan'
