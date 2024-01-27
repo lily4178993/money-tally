@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to new_user_session_path do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1 class="title">Forgot password?</h1>
+  </div>
+  <div class="wrapper-guest">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    
+      <div class="form-inputs">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-input' %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "Send me reset password instructions", class: 'form-submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
