@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <div class="back-box">
+      <%= link_to group_path(@group) do %>
+        <%= image_tag("m/menuBack.svg", class:'icon-small back') %>
+      <% end %>
+    </div>
+    <h1 class="title">
+      New expense
+    </h1>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgPlant2.png") %>
+      <%= image_tag("bg/bgResearch.png") %>
+    </div>
+  </div>
+  <div class="wrapper-right">
+    <%= form_for([@user, @group, @expense], url: group_expenses_path(@group)) do |f| %>
+
+      <div class="form-inputs">
+        <%= f.text_field :name, placeholder: 'Expense Name', autofocus: true, class: 'form-input' , required: true %>
+          <%= f.number_field :amount, placeholder: 'Amount in $USD', step: '0.00001', class: 'form-input', required: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit 'Create', class: 'form-submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>

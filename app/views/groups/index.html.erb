@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <div class="wrapper-left">
+    <h1 class="title">Categories</h1>
+    <div class="wrapper-left-bg">
+      <%= image_tag("bg/bgPlant1.png") %>
+    </div>
+  </div>
+  <div class="wrapper-right">
+    <% if @groups.empty? %>
+      <p class="empty-message">No categories</p>
+    <% else %>
+      <ul class="categories">
+        <% @groups.each_with_index do |group, index| %>
+          <li class="category">
+            <%= link_to group_path(group), class:"card" do %>
+                <%= image_tag("#{group.icon}",class:"icon icon-large") %>
+
+                  <h2 class="title"><%= group.name %></h2>
+                  <p class="creation-date">
+                    <%= group.created_at.strftime("%d %b %Y") %>
+                  </p>
+
+                <div class="card-price">
+                  $<%= @total_expenses_by_group[index] %>
+                </div>
+            <% end %>
+            <div class="card-actions">
+              <%= button_to 'Delete', group_path(group),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="box-buttons-actions">
+      <%= link_to 'Add a new category', new_group_path, class:'add-button' %>
+    </div>
+  </div>
+</div>
