@@ -6,7 +6,6 @@
 - [Built With](#built-with)
 - [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
-- [Live Demo](#live-demo)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -16,7 +15,7 @@
 - [Author](#author)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
-- [Show your support](#show-your-support)
+- [Show your support](#support)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
@@ -42,16 +41,6 @@
 2. Category Creation for Expenses
 3. Monthly Expense Overview
 4. Editable User Profile
-
-## **Live Demo**<a name="live-demo"></a>
-
-Experience **Money Tally** in action! Check out the live version of the app here:
-
-[Live Demo Link](https://money-tally.onrender.com)
-
-For a detailed walkthrough of **Money Tally**, watch the video presentation. It covers all the key features and functionalities of the app:
-
-[Walkthrough Video Presentation](https://drive.google.com/file/d/1ZJwOaMegnjA6zFliJln9v8TGjeYo_sOD/view?usp=sharing)
 
 ## **Getting Started**<a name="getting-started"></a>
 
